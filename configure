@@ -1,0 +1,20 @@
+### Add a ded. Container-Network to an existing VCH ###
+
+./vic-machine-darwin configure \
+--target lab-vcsa67-001.lab.jarvis.local/Datacenter-North \
+--user adm.jarvis@lab.jarvis.local \
+--thumbprint 4F:D3:9B:50:00:31:D9:84:9D:DA:CF:57:21:D6:0D:11:89:78:97:26 \
+--id vm-212 \ ### do a vic-machine inspect to get the vm-id
+--container-network vic-tam-container:container-net \
+--container-network-gateway vic-tam-container:192.168.100.1/24 \
+--container-network-ip-range vic-tam-container:192.168.100.0/24 \
+--container-network-dns vic-tam-container:192.168.100.80 \
+
+
+### Reset a hanging progress ###
+./vic-machine-darwin configure \
+--target lab-vcsa67-001.lab.jarvis.local/Datacenter-North \
+--user adm.jarvis@lab.jarvis.local \
+--thumbprint 4F:D3:9B:50:00:31:D9:84:9D:DA:CF:57:21:D6:0D:11:89:78:97:26 \
+--id vm-1010 \
+--reset-progress
