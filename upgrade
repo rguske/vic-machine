@@ -1,0 +1,9 @@
+### Upgrade the version of an existing Virtual Container Host
+### Use ./vic-machine-darwin inspect to identify the neccessary vm-id of the VCH
+
+./vic-machine-darwin upgrade \
+--target lab-vcsa67-001.lab.jarvis.local/Datacenter-North \
+--user administrator@jarvis.local \
+--id vm-1190 \
+--timeout 5m \
+--force
