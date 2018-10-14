@@ -23,7 +23,7 @@
 --thumbprint 4F:D3:9B:50:00:31:D9:84:9D:DA:CF:57:21:D6:0D:11:89:78:97:26 \
 --target lab-vcsa67-001.lab.jarvis.local/Datacenter-South \
 --ops-user jarvis@lab \
---ops-grant-perms \
+--ops-grant-perms
 
 ### Without Container-Network ###
 ./vic-machine-darwin create \
@@ -45,7 +45,7 @@
 --thumbprint 4F:D3:9B:50:00:31:D9:84:9D:DA:CF:57:21:D6:0D:11:89:78:97:26 \
 --target lab-vcsa67-001.lab.jarvis.local/Datacenter-North \
 --ops-user jarvis@lab \
---ops-grant-perms \
+--ops-grant-perms
 
 ### Without Container-Network for VCH-Spark ###
 ./vic-machine-darwin create \
@@ -67,7 +67,7 @@
 --thumbprint 4F:D3:9B:50:00:31:D9:84:9D:DA:CF:57:21:D6:0D:11:89:78:97:26 \
 --target lab-vcsa67-001.lab.jarvis.local/Datacenter-North \
 --ops-user jarvis@lab \
---ops-grant-perms \
+--ops-grant-perms
 
 ### Without Container-Network and with static public network + DNS entry for VCH-Spark ###
 ./vic-machine-darwin create \
@@ -92,7 +92,7 @@
 --target lab-vcsa67-001.lab.jarvis.local/Datacenter-North \
 --ops-user jarvis@lab \
 --ops-grant-perms \
---bridge-network-range 172.18.0.0/12 \
+--bridge-network-range 172.18.0.0/12
 
 ### With Container-Network for Yelb on DC North ###
 ./vic-machine-darwin create \
@@ -118,4 +118,4 @@
 --thumbprint 4F:D3:9B:50:00:31:D9:84:9D:DA:CF:57:21:D6:0D:11:89:78:97:26 \
 --target lab-vcsa67-001.lab.jarvis.local/Datacenter-North \
 --ops-user jarvis@lab \
---ops-grant-perms \
+--ops-grant-perms
