@@ -1,3 +1,4 @@
+### Create VCH to a nested vSAN Cluster / with ded. Container-Network ###
 ./vic-machine-darwin create \
 --name vch01 \
 --container-name-convention mark_{name} \
@@ -23,6 +24,30 @@
 --thumbprint 4F:D3:9B:50:00:31:D9:84:9D:DA:CF:57:21:D6:0D:11:89:78:97:26 \
 --target lab-vcsa67-001.lab.jarvis.local/Datacenter-South \
 --ops-user jarvis@lab \
+--ops-grant-perms
+
+### Create VCH to a single physical host, with ded. Container-Network and specification to the VIC certificate path ###
+./vic-machine-darwin create \
+--name vch-monday \
+--syslog-address udp://192.168.100.78:514 \
+--compute-resource /Datacenter-North/host/192.168.178.70 \
+--image-store lab-ds-001 \
+--volume-store lab-ds-001/volumes:default \
+--bridge-network vic-bridge \
+--bridge-network-range 172.16.0.0/12 \
+--public-network vic-public \
+--dns-server 192.168.100.80 \
+--container-network vic-container:c-net \
+--container-network-gateway vic-container:192.168.100.1/24 \
+--container-network-ip-range vic-container:192.168.100.0/24 \
+--container-network-dns vic-container:192.168.100.80 \
+--registry-ca=/Users/rguske/_DEV/vic/Certs/ca.crt \ ### download VIC cert from the 
+--no-tls \
+--user administrator@jarvis.local \
+--thumbprint 4F:D3:9B:50:00:31:D9:84:9D:DA:CF:57:21:D6:0D:11:89:78:97:26 \
+--target lab-vcsa67-001.lab.jarvis.local/Datacenter-North \
+--force \
+--ops-user adm.jarvis@lab.jarvis.local \
 --ops-grant-perms
 
 ### Without Container-Network ###
