@@ -1,3 +1,32 @@
+### vch deployment in DC North with tls-cname. Static DNS entry was made manually before ###
+DC-North
+./vic-machine-darwin create \
+--target lab-vcsa67-001.lab.jarvis.local/Datacenter-North \
+--name vch-dev \
+--syslog-address udp://192.168.100.78:514 \
+--compute-resource /Datacenter-North/host/Cluster \
+--image-store lab-ds-001 \
+--volume-store lab-ds-001/volumes:default \
+--bridge-network vic-bridge \
+--bridge-network-range 172.16.0.0/12 \
+--public-network vic-public \
+--dns-server 192.168.100.80 \
+--container-network container-network:c-network \
+--container-network-gateway container-network:192.168.100.1/24 \
+--container-network-ip-range container-network:192.168.100.0/24 \
+--container-network-dns container-network:192.168.100.80 \
+--registry-ca=/Users/rguske/_DEV/vic/Certs/ca.crt \
+--tls-cname=vch-dev.lab.jarvis.local \
+--affinity-vm-group \
+--user administrator@jarvis.local \
+--thumbprint 4F:D3:9B:50:00:31:D9:84:9D:DA:CF:57:21:D6:0D:11:89:78:97:26 \
+--force \
+--ops-user adm.jarvis@lab.jarvis.local \
+--ops-grant-perms
+
+
+
+
 ### Create VCH to a nested vSAN Cluster / with ded. Container-Network ###
 ./vic-machine-darwin create \
 --name vch01 \
