@@ -19,10 +19,11 @@
 --id vm-1010 \
 --reset-progress
 
-### Configure Affinity-Group afterwards ###
+### Configure options afterwards ###
 ./vic-machine-darwin configure \
 --target lab-vcsa67-001.lab.jarvis.local/Datacenter-South \
 --user administrator@jarvis.local \
 --thumbprint 4F:D3:9B:50:00:31:D9:84:9D:DA:CF:57:21:D6:0D:11:89:78:97:26 \
---id vm-1364 \
+--id vm-1375 \
+--volume-store vsanDatastore/volumes:default 
 --affinity-vm-group
