@@ -1,7 +1,0 @@
-### Inspect an existing Virtual Container Host ###
-
-./vic-machine-darwin inspect \
---target lab-vcsa67-001.lab.jarvis.local/Datacenter-North \
---user adm.jarvis@LAB.JARVIS.LOCAL \
---thumbprint 4F:D3:9B:50:00:31:D9:84:9D:DA:CF:57:21:D6:0D:11:89:78:97:26 \
---name vch-yelb
