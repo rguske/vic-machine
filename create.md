@@ -12,25 +12,27 @@ See: <a href="https://rguske.github.io/post/vsphere-integrated-containers-part-i
 
 ```
 ./vic-machine-darwin create \
---target lab-vcsa67-001.lab.jarvis.local/Datacenter-North \
---name vch-dev \
+--name vch-rguske \
 --syslog-address udp://192.168.100.78:514 \
+--target lab-vcsa67-001.lab.jarvis.local/Datacenter-North \
 --compute-resource /Datacenter-North/host/Cluster \
 --image-store lab-ds-001 \
---volume-store lab-ds-001/volumes:default \
+--volume-store lab-ds-001/volumes:vch-rguske-vol \
 --bridge-network vic-bridge \
 --bridge-network-range 172.16.0.0/12 \
 --public-network vic-public \
 --dns-server 192.168.100.80 \
---container-network container-network:c-network \
---container-network-gateway container-network:192.168.100.1/24 \
---container-network-ip-range container-network:192.168.100.0/24 \
---container-network-dns container-network:192.168.100.80 \
+--container-network vic-container:container-net \
+--container-network-gateway vic-container:192.168.100.1/24 \
+--container-network-ip-range vic-container:192.168.100.0/24 \
+--container-network-dns vic-container:192.168.100.80 \
 --registry-ca=/Users/rguske/_DEV/vic/Certs/ca.crt \
---tls-cname=vch-dev.lab.jarvis.local \
---affinity-vm-group \
+--tls-cname=vch-rguske.lab.jarvis.local \
+--certificate-key-size 2048 \
+--organization lab.jarvis.local \
 --user administrator@jarvis.local \
 --thumbprint 4F:D3:9B:50:00:31:D9:84:9D:DA:CF:57:21:D6:0D:11:89:78:97:26 \
+--affinity-vm-group \
 --force \
 --ops-user adm.jarvis@lab.jarvis.local \
 --ops-grant-perms
