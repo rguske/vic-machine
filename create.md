@@ -54,7 +54,7 @@ See: <a href="https://rguske.github.io/post/vsphere-integrated-containers-part-i
 --bridge-network vic-bridge \
 --bridge-network-range 172.16.0.0/12 \
 --public-network vic-public \
---dns-server 10.10.10..254 \
+--dns-server 10.10.10.254 \
 --container-network vic-container:container-net \
 --container-network-gateway vic-container:192.168.100.1/24 \
 --container-network-ip-range vic-container:192.168.100.0/24 \
