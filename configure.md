@@ -1,8 +1,19 @@
-## `vic-machine configure` gives you the ability to add a specific configuration like an ded. network for your instantiated Container-VMs for example.
+## `vic-machine configure` gives you the ability to add a specific configuration like e.g. a dedicated network (Container Network) for your instantiated Container-VMs to your Virtual Container Host afterwards.
 
-> *Please beare in mind that the following example(s) are all based on my homelab parameters*
+> *Please adjust the environment parameters accordingly to yours!*
 
-Use `vic-machine` ls to get the needed vm-id´s for your Virtual Container Hosts.
+Use `vic-machine ls` to get the needed vm-id´s for your Virtual Container Hosts. **Example:**
+
+```
+./vic-machine-linux ls --target vic@jarvis.lab@vcsa.jarvis.lab/Stark-Industries --thumbprint 55:AC:B3:2D:9B:56:62:F...
+
+INFO[0000] vSphere password for vic@jarvis.lab:      
+INFO[0003] ### Listing VCHs ####                        
+INFO[0003] Validating target                            
+
+ID              PATH                                           NAME        VERSION                      UPGRADE STATUS
+vm-14989        /Stark-Industries/host/Malibu/Resources        mk5         v1.5.5-21324-50a44954        Up to date
+```
 
 ### Add a ded. Container-Network to an existing VCH.
 ```
