@@ -1,6 +1,6 @@
 ## `vic-machine update` the Firewall on an ESXi Host for the communication with the VCH.
 
-> *Please beare in mind that the following example(s) are all based on my homelab parameters*
+> *Please adjust the environment parameters accordingly to yours!*
 
 ```
 ./vic-machine-darwin update firewall \

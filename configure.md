@@ -1,4 +1,4 @@
-## `vic-machine configure` gives you the ability to add a specific configuration like e.g. a dedicated network (Container Network) for your instantiated Container-VMs to your Virtual Container Host afterwards.
+## `vic-machine configure` gives you the ability to add a specific configuration like e.g. a dedicated Container Network for your instantiated Container-VMs to your Virtual Container Host afterwards.
 
 > *Please adjust the environment parameters accordingly to yours!*
 
@@ -15,7 +15,7 @@ ID              PATH                                           NAME        VERSI
 vm-14989        /Stark-Industries/host/Malibu/Resources        mk5         v1.5.5-21324-50a44954        Up to date
 ```
 
-### Add a ded. Container-Network to an existing VCH.
+### Add a dedicated Container-Network to an existing VCH.
 ```
 ./vic-machine-darwin configure \
 --target lab-vcsa67-001.lab.jarvis.local/Datacenter-North \

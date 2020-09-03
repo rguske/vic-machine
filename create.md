@@ -1,41 +1,43 @@
-## `vic-machine create` will, like the name is promising you, create a Virtual Container Host for you, which will provide the Docker-Endpoint for your Developers.
+## `vic-machine create`
+
+By using `vic-machine create` a Virtual Container Host (VCH) will be deployed to your vSphere Environment. The VCH will provide the Docker-Endpoint for your Developers.
 
 > A VCH is the virtual functional equivalent of a Linux VM running Docker. From a Docker client point of view, the Virtual Container Host looks very similar to a native Docker host. Hence, there are differences between a native Docker host and a Virtual Container Host (VCH), and between a Linux container and a container VM.
 
-**Source:** <a href="https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/vsphere/vmware-vsphere-integrated-containers-white-paper.pdf" target="_blank">Architecture Overview (VIC 1.2)</a>
+**Source:** [Architecture Overview (VIC 1.2)](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/vsphere/vmware-vsphere-integrated-containers-white-paper.pdf)
 
-See: <a href="https://rguske.github.io/post/vsphere-integrated-containers-part-iii-deployment-of-a-virtual-container-host/" target="_blank">vSphere Integrated Containers Part III: Deployment of a Virtual Container Host</a>
+See: [vSphere Integrated Containers Part III: Deployment of a Virtual Container Host](https://rguske.github.io/post/vsphere-integrated-containers-part-iii-deployment-of-a-virtual-container-host/)
 
-> *Please beare in mind that the following example(s) are all based on my homelab parameters*
+> *Please adjust the environment parameters accordingly to yours!*
 
-### VCH deployment with the option tls-cname. *Static DNS entry was made manually before (workaround)*.
+### VCH deployment with the just mandatory network configuration (public and bridge)*.
 
 ```
-./vic-machine-darwin create \                             ### vic-machine binary + action
---name vch-example \                                      ### Name of the Virtual Conatiner Host
---syslog-address udp://10.10.10.10:514 \                  ### Syslog server
---target vcenter.example.org/Datacenter \                 ### vSphere Datacenter
---user administrator@vsphere.local \                      ### User with appropriate privileges
---compute-resource /Datacenter/host/Cluster \             ### vSphere Cluster or single ESXi Host
---image-store vsanDatastore \                             ### Datastore to deposite the images
---volume-store vsanDatastore/volumes:default \            ### Datastore for the Docker Volumes (VMDKs)
---bridge-network ls-vic-bridge \                          ### vDS dPort Group for the Container Bridge Network
---bridge-network-range 172.16.0.0/12 \                    ### Network range for the Bridge Network
---public-network ls-vic-public \                          ### vDS dPort Group for the Public Network
---dns-server 10.10.10.254 \                               ### DNS Server address for the Public Network
---public-network-ip=10.10.10.11/24 \                      ### Static IP address for the Virtual Container Host
---public-network-gateway 10.10.10.254 \                   ### Gateway for the Public network
---tls-cname=vch-example.example.org \                     ### Certificate Common Name (CN) for the VCH
---certificate-key-size 3072 \                             ### Key size for the auto-generated certificates
---organization example.org \                              ### Certificate Organization (O) field
---registry-ca=/folder path/ca.crt \                       ### Path to the VIC (Harbor) ca.crt file
---thumbprint 4C:92:D7:FC:F8:8D:5A:9F:.... \               ### vCenter Server Thumbprint
---affinity-vm-group \                                     ### Automatically creates a VM/Host Group (cVM/ VCH Group)
---ops-user vic-devops-admin@example.org \                 ### Defines the user which is used by the VCH to interact with vSphere
---ops-grant-perms                                         ### Automatically grants the necessary vSphere permissions
+./vic-machine-darwin create \
+--name vch-example \
+--syslog-address udp://10.10.10.10:514 \
+--target vcenter.example.org/Datacenter \
+--user administrator@vsphere.local \
+--compute-resource /Datacenter/host/Cluster \
+--image-store vsanDatastore \
+--volume-store vsanDatastore/volumes:default \
+--bridge-network ls-vic-bridge \
+--bridge-network-range 172.16.0.0/12 \
+--public-network ls-vic-public \
+--dns-server 10.10.10.254 \
+--public-network-ip=10.10.10.11/24 \
+--public-network-gateway 10.10.10.254 \
+--tls-cname=vch-example.example.org \
+--certificate-key-size 3072 \
+--organization example.org \
+--registry-ca=/folder path/ca.crt \
+--thumbprint 4C:92:D7:FC:F8:8D:5A:9F:.... \
+--affinity-vm-group \
+--ops-user vic-devops-admin@example.org \
+--ops-grant-perms
 ```
 
-### VCH deployment with a dedicated Network for the Container-VMs and additional options.
+### VCH deployment with a dedicated Network for the Container-VMs and more advanced options like e.g. resource configuration options for the VCH.
 
 ```
 ./vic-machine-darwin create \

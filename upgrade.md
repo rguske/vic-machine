@@ -1,8 +1,10 @@
-## `vic-machine upgrade` the version of (an) existing Virtual Container Host(s) to a newer version.
+## `vic-machine upgrade` the version of (an) existing Virtual Container Hosts to a newer version.
 
-How to: <a href="https://rguske.github.io/post/upgrade-vsphere-integrated-containers/" target="_blank">Upgrade vSphere Integrated Containers</a>
+I wrote a blog post about the upgrade procedure: [Upgrade vSphere Integrated Containers](https://rguske.github.io/post/upgrade-vsphere-integrated-containers)
 
-*Use `vic-machine` ls to get the needed vm-id´s for your Virtual Container Hosts.*
+*Use `vic-machine ls` to get the needed vm-id for your Virtual Container Host.*
+
+> *Please adjust the environment parameters accordingly to yours!*
 
 ```
 ./vic-machine-darwin upgrade \

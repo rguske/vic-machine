@@ -1,6 +1,6 @@
 ## `vic-machine delete` a Virtual Container Host.
 
-> *Please beare in mind that the following example(s) are all based on my homelab parameters*
+> *Please adjust the environment parameters accordingly to yours!*
 
 ```
 ./vic-machine-darwin delete \
